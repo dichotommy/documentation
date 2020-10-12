@@ -1,13 +1,19 @@
 # Indexes
 
-An index is an entity that gathers a set of documents with its own settings.
+An index is an entity that collects some number of <clientGlossary word="document" label="documents" /> alongside several search-related settings.
 
-It can be comparable to a table in `SQL`, or a collection in MongoDB.
+More practically speaking, it is a searchable container of documents that have already been processed by MeiliSearch, and includes some customizable rules affecting how search results are returned. It has been compared to a table in `SQL`, or a collection in MongoDB.
 
-An index is defined by an `uid` and contains the following information:
+Indexes serve multiple functions. They help organize related documents together with search-customization options, such as [relevancy rules][relevancy rules], [synonyms][synonyms], and [stop words][stop words]. They also ensure that two documents included in any search process cannot be identical; this is done by forcing documents to obey the index's [primary key][primary key].
+
+Finally, and most importantly: indexes exist to be searched. Every search operation performed by MeiliSearch requires an index to be present. As far as your MeiliSearch database is concerned, [documents][documents] only exist in indexes.
+
+## Structure
+
+An index is defined by a `uid` and contains the following information:
 
 - One <clientGlossary word="primary key"/>
-- Default settings that can be configured as needed: relevancy rules, synonyms, stop words, and field properties.
+- Search settings that can be configured as needed: relevancy rules, synonyms, stop words, faceted search, and field properties.
 
 #### Example
 
@@ -79,3 +85,11 @@ Fields can have either or both or none of the following properties that can be m
 By default, each field is stored and this behavior cannot be changed.
 
 [Learn more about field properties](/guides/advanced_guides/field_properties.md)
+
+[index uid]: /guides/main_concepts/indexes.md#index-uid
+[primary key]: /guides/main_concepts/indexes.md#primary-key
+[relevancy rules]: /guides/main_concepts/indexes.md#relevancy-rules
+[synonyms]: /guides/main_concepts/indexes.md#synonyms
+[stop words]: /guides/main_concepts/indexes.md#stop-words
+[field properties]: /guides/main_concepts/indexes.md#field-properties
+[documents]: /guides/main_concepts/documents.md
